@@ -1,0 +1,237 @@
+/* Palette + font variables now live in theme.css ([data-theme]/[data-font] on <html>).
+   This file only holds layout, spacing, and structure. */
+
+body {
+  width: 368px;
+  margin: 0;
+  /* Whitespace as an active tool (guide §4): generous, asymmetric padding —
+     a touch more on top/bottom than sides, so the "room" breathes. */
+  padding: 18px 16px 14px;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.brand { display: flex; align-items: center; gap: 7px; }
+.brand-mark {
+  width: 10px; height: 10px; border-radius: 3px;
+  background: linear-gradient(135deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 55%, black) 100%);
+  display: inline-block;
+}
+/* Manual kerning on the wordmark (guide §4): tightened + tuned per letter-pair
+   so "APCG" reads as one uniform unit rather than four unevenly-spaced glyphs. */
+.brand-name {
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: var(--font-tightening, -0.01em);
+}
+
+.header-actions { display: flex; align-items: center; gap: 6px; }
+
+.pill {
+  font-size: 9.5px;
+  color: var(--accent-text);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  padding: 3px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.12s ease, border-color 0.12s ease, transform 0.2s ease;
+}
+.icon-btn:hover { color: var(--accent-text); border-color: color-mix(in srgb, var(--accent) 45%, transparent); }
+.icon-btn:active { transform: rotate(35deg); }
+
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  color: var(--muted);
+  margin: 0 0 8px 1px;
+  font-weight: 600;
+}
+
+/* ---- 1 BIG: hero — the one unmistakable focal point (guide §3) ---- */
+.hero-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 16px 18px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+.hero-number {
+  font-size: 46px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -1px;
+  color: var(--text);
+}
+.hero-label { font-size: 11px; color: var(--muted); margin-top: 4px; }
+.hero-status { font-size: 12.5px; margin-top: 10px; font-weight: 700; }
+
+/* ---- 2 MEDIUM: equal pair, one step down from the hero ---- */
+.stat-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.stat-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 12px 11px;
+  display: flex;
+  flex-direction: column;
+}
+.stat-value { font-size: 22px; font-weight: 800; line-height: 1; }
+.stat-name { font-size: 11.5px; font-weight: 600; margin-top: 6px; }
+.stat-sub { font-size: 9.5px; color: var(--muted); margin-top: 2px; }
+
+/* ---- rest small: badge ---- */
+.badge-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 2px;
+  margin-bottom: 12px;
+}
+.badge-chip {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--accent-text);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+.badge-sub { font-size: 10px; color: var(--muted); }
+
+/* ---- rest small: the grid card ---- */
+.grid-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px 14px 13px;
+  background: var(--panel);
+  margin-bottom: 12px;
+}
+.grid-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.view-toggle {
+  display: flex;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 2px;
+  gap: 2px;
+}
+.toggle-btn {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 4px 9px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+}
+.toggle-btn.active {
+  background: var(--panel);
+  color: var(--text);
+  box-shadow: 0 0 0 1px var(--border);
+}
+
+.legend { display: flex; gap: 8px; font-size: 9.5px; color: var(--muted); }
+.legend-item { display: flex; align-items: center; gap: 3px; }
+.swatch { width: 7px; height: 7px; border-radius: 2px; display: inline-block; }
+.swatch.green { background: var(--green); }
+.swatch.yellow { background: var(--yellow); }
+.swatch.red { background: var(--red); }
+
+/* Real week/day grid, GitHub-contribution style */
+.month-labels {
+  display: grid;
+  grid-auto-flow: column;
+  margin-left: 20px; /* aligns over the grid, past the day-label column */
+  margin-bottom: 3px;
+  font-size: 8.5px;
+  color: var(--muted);
+}
+.month-labels span { white-space: nowrap; }
+
+.grid-body { display: flex; gap: 4px; }
+.day-labels {
+  display: grid;
+  grid-template-rows: repeat(7, 11px);
+  gap: 3px;
+  font-size: 8px;
+  color: var(--muted);
+  width: 20px;
+  flex-shrink: 0;
+  line-height: 11px;
+}
+
+.grid {
+  flex: 1;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, 11px);
+  gap: 3px;
+}
+.cell { width: 11px; height: 11px; border-radius: 3px; background: var(--empty); }
+.cell.green { background: var(--green); }
+.cell.yellow { background: var(--yellow); }
+.cell.red { background: var(--red); }
+
+/* Month (aggregate) view — a small horizontal bar per month, same color logic */
+.month-view { display: flex; flex-direction: column; gap: 7px; }
+.month-bar-row { display: flex; align-items: center; gap: 8px; }
+.month-bar-label { font-size: 10px; color: var(--muted); width: 34px; flex-shrink: 0; }
+.month-bar-track { flex: 1; height: 8px; border-radius: 4px; background: var(--empty); overflow: hidden; }
+.month-bar-fill { height: 100%; border-radius: 4px; }
+.month-bar-value { font-size: 10px; color: var(--muted); width: 26px; text-align: right; flex-shrink: 0; }
+
+.dashboard-link {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-text);
+  text-decoration: none;
+  padding: 9px 0;
+  margin-bottom: 8px;
+}
+.dashboard-link:hover { text-decoration: underline; }
+
+.footer {
+  text-align: center;
+  font-size: 9px;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+}

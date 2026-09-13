@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>APCG — Theme &amp; Typography</title>
+<link rel="stylesheet" href="theme.css" />
+<link rel="stylesheet" href="settings.css" />
+</head>
+<body>
+
+<header class="s-nav">
+  <a class="brand" href="dashboard.html"><span class="brand-mark"></span><span class="brand-name">APCG</span></a>
+  <span class="s-nav-title">Theme &amp; Typography</span>
+</header>
+
+<main class="s-main">
+
+  <div class="s-hero">
+    <p class="eyebrow">CUSTOMIZE</p>
+    <h1>Make the grid <span class="accent">yours.</span></h1>
+    <p class="s-sub">Pick a color palette and a typeface. Changes apply instantly and everywhere — the popup, the dashboard, and this page.</p>
+  </div>
+
+  <!-- LIVE PREVIEW: one focal point users check against as they choose (guide §3) -->
+  <section class="s-section">
+    <p class="section-eyebrow">LIVE PREVIEW</p>
+    <div class="preview-frame">
+      <div class="preview-popup">
+        <div class="p-header">
+          <div class="p-brand"><span class="p-brand-mark"></span><span class="p-brand-name">APCG</span></div>
+          <span class="p-pill">● tracking instagram.com</span>
+        </div>
+        <div class="p-hero">
+          <div class="p-hero-number">7</div>
+          <div class="p-hero-label">commits today</div>
+          <div class="p-hero-status">Peace achieved</div>
+        </div>
+        <div class="p-stat-pair">
+          <div class="p-stat"><span class="p-stat-value">12</span><span class="p-stat-name">Current streak</span></div>
+          <div class="p-stat"><span class="p-stat-value">31</span><span class="p-stat-name">Longest streak</span></div>
+        </div>
+        <div class="p-grid">
+          <div class="p-cell green"></div><div class="p-cell green"></div><div class="p-cell yellow"></div>
+          <div class="p-cell green"></div><div class="p-cell red"></div><div class="p-cell green"></div>
+          <div class="p-cell yellow"></div><div class="p-cell green"></div><div class="p-cell green"></div>
+          <div class="p-cell empty"></div><div class="p-cell green"></div><div class="p-cell yellow"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PALETTE PICKER -->
+  <section class="s-section">
+    <div class="section-head">
+      <p class="section-eyebrow">COLOR PALETTE</p>
+      <h2>Six palettes, each with a different psychological read.</h2>
+      <p class="section-note">Minimalism and restraint read as premium (guide §3) — every palette here keeps the same three-zone grid logic, just re-toned.</p>
+    </div>
+    <div class="swatch-grid" id="paletteGrid"></div>
+  </section>
+
+  <!-- FONT PICKER -->
+  <section class="s-section">
+    <div class="section-head">
+      <p class="section-eyebrow">TYPEFACE</p>
+      <h2>Four typefaces, each with its own character.</h2>
+      <p class="section-note">Applied everywhere, with manual kerning tightened on the wordmark specifically (guide §4) — the exact fix uneven pairs like W/A/R need.</p>
+    </div>
+    <div class="font-grid" id="fontGrid"></div>
+  </section>
+
+  <div class="s-actions">
+    <button class="btn-reset" id="resetBtn" type="button">Reset to default</button>
+    <span class="save-note" id="saveNote">Saved automatically</span>
+  </div>
+
+</main>
+
+<script src="theme.js"></script>
+<script src="settings.js"></script>
+</body>
+</html>

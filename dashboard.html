@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>APCG — Your Grid</title>
+<link rel="stylesheet" href="theme.css" />
+<link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-left">
+    <a class="brand" href="#home"><span class="brand-mark"></span><span class="brand-name">APCG</span></a>
+    <nav class="nav-links">
+      <a href="#home" data-page="home">Home</a>
+      <a href="#how" data-page="how">How it works</a>
+      <a href="#blog" data-page="blog">Dev log</a>
+      <a href="#about" data-page="about">About</a>
+      <a href="#privacy" data-page="privacy">Privacy</a>
+      <a href="#contact" data-page="contact">Contact</a>
+    </nav>
+  </div>
+  <div class="nav-right">
+    <span class="pill" id="statusPill">● tracking instagram.com</span>
+    <a class="pill pill-link" href="settings.html" target="_blank" rel="noopener">Theme &amp; fonts ⚙</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HOME ============ -->
+  <section class="page" id="page-home">
+    <div class="hero">
+      <p class="eyebrow">APCG · LOCAL-ONLY, NO ACCOUNT</p>
+      <h1>Your attention, <span class="accent">visible</span> — not vague.</h1>
+      <p class="hero-sub">One fully-watched Reel is one commit. See it as a grid instead of feeling it as a lost afternoon. Everything here is computed on this device, from this device's own storage.</p>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat-card main">
+        <div class="hero-number" id="todayCount">0</div>
+        <div class="hero-label">commits today</div>
+        <div class="hero-status" id="todayStatus">No reels watched yet</div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="hero-number small" id="currentStreak">0</div>
+        <div class="hero-label">current streak</div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="hero-number small" id="longestStreak">0</div>
+        <div class="hero-label">longest streak</div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="hero-number small accent" id="badgeLabel">—</div>
+        <div class="hero-label">badge earned</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-eyebrow">THE GRID</p>
+      <div class="grid-panel">
+        <div class="grid" id="grid"></div>
+        <div class="legend">
+          <span class="legend-item"><span class="swatch green"></span>0–5 · Peace</span>
+          <span class="legend-item"><span class="swatch yellow"></span>6–30 · Controlled</span>
+          <span class="legend-item"><span class="swatch red"></span>31+ · Procrastination zone</span>
+          <span class="legend-item"><span class="swatch empty"></span>No data</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><p class="eyebrow">KEEP GOING</p><h2>Understand the project.</h2></div>
+      <div class="card-grid cols-3">
+        <a class="card" href="#how" data-page="how"><h3>How commits are counted</h3><p>The exact detection logic — loop-wraps, visibility, and why naive progress checks don't work on Reels.</p></a>
+        <a class="card" href="#about" data-page="about"><h3>Why this exists</h3><p>The story behind APCG, and what it will and won't ever do with your data.</p></a>
+        <a class="card" href="#blog" data-page="blog"><h3>Dev log</h3><p>Build notes from actually shipping this — what broke, what got simplified, what's next.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="page" id="page-how">
+    <div class="hero">
+      <p class="eyebrow">HOW IT WORKS</p>
+      <h1>What actually counts as <span class="accent">one commit.</span></h1>
+      <p class="hero-sub">No hidden formulas. Here's exactly what the extension watches for, and why each rule exists.</p>
+    </div>
+
+    <div class="section">
+      <div class="numbered-list">
+        <div class="numbered-row">
+          <span class="idx">01</span>
+          <div><h3>A full watch, not a glance</h3><p>Instagram Reels loop. A commit is only logged when the video's playhead wraps from near the end back to the start — or fires a natural "ended" event. Skips, previews, and half-scrolls never register.</p></div>
+        </div>
+        <div class="numbered-row">
+          <span class="idx">02</span>
+          <div><h3>Only what's actually on screen</h3><p>Instagram preloads upcoming Reels before you scroll to them. An IntersectionObserver checks that the video is genuinely visible before any commit counts.</p></div>
+        </div>
+        <div class="numbered-row">
+          <span class="idx">03</span>
+          <div><h3>Your local calendar day, not UTC</h3><p>Each commit is filed under your device's local date, so a late-night scroll lands on the day you actually experienced it.</p></div>
+        </div>
+        <div class="numbered-row">
+          <span class="idx">04</span>
+          <div><h3>Three zones, one 15-minute budget</h3><p>15 minutes a day, at roughly 30 seconds per Reel, works out to about 30 commits. 0–5 is green, 6–30 is yellow, 31+ is red.</p></div>
+        </div>
+        <div class="numbered-row">
+          <span class="idx">05</span>
+          <div><h3>Streaks forgive gaps, not relapses</h3><p>A day with zero recorded data is treated as a gap, not a break. A single red day is the only thing that resets your streak to zero.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><p class="eyebrow">THE GRID</p><h2>Three colors, nothing else.</h2></div>
+      <div class="card-grid cols-3">
+        <div class="card"><span class="num" style="color:var(--green-text)">0–5</span><h3>Peace achieved</h3><p>Mindful use. Optimal focus. The goal state.</p></div>
+        <div class="card"><span class="num" style="color:var(--yellow)">6–30</span><h3>Controlled budget</h3><p>Within the daily allowance — still counts toward a streak.</p></div>
+        <div class="card"><span class="num" style="color:var(--red)">31+</span><h3>Procrastination zone</h3><p>The budget's blown, and the streak resets to zero.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DEV LOG ============ -->
+  <section class="page" id="page-blog">
+    <div class="hero">
+      <p class="eyebrow">DEV LOG</p>
+      <h1>Notes from actually <span class="accent">shipping this.</span></h1>
+      <p class="hero-sub">Build notes, not announcements — what broke, what got cut, and what's next.</p>
+    </div>
+
+    <div class="section">
+      <div class="blog-grid">
+        <div class="blog-card">
+          <div class="thumb" style="background:#101f14;">🟩</div>
+          <div class="blog-meta"><span class="blog-tag">v0.1</span><span>Detection</span></div>
+          <h3>Why "progress ≥ 98%" doesn't work on a looping Reel</h3>
+          <p>The first naive completion check either never fired or fired constantly. The fix was detecting the loop-wrap itself.</p>
+        </div>
+        <div class="blog-card">
+          <div class="thumb" style="background:#1a1608;">🟨</div>
+          <div class="blog-meta"><span class="blog-tag">v0.1</span><span>Storage</span></div>
+          <h3>UTC dates put my commits on the wrong day</h3>
+          <p><code>toISOString()</code> is UTC. Every date key now comes from local <code>getFullYear/getMonth/getDate</code>.</p>
+        </div>
+        <div class="blog-card">
+          <div class="thumb" style="background:#1a0e0e;">🟥</div>
+          <div class="blog-meta"><span class="blog-tag">v0.2</span><span>Streaks</span></div>
+          <h3>A missing day isn't the same as a red day</h3>
+          <p>The first streak logic reset to zero on install. Now a day with no recorded data is a gap, not a break.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><p class="eyebrow">WHAT'S NEXT</p><h2>Open questions I haven't solved yet.</h2></div>
+      <div class="numbered-list">
+        <div class="numbered-row">
+          <span class="idx">—</span>
+          <div><h3>Real Instagram DOM testing</h3><p>Built without live access to test against Instagram's current markup. Confirmed accurate by manual count — next is testing across more session types.</p></div>
+        </div>
+        <div class="numbered-row">
+          <span class="idx">—</span>
+          <div><h3>Mobile, honestly</h3><p>There's no way to run a Manifest V3 extension inside the native Instagram app. Firefox for Android is the realistic path.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="page" id="page-about">
+    <div class="hero">
+      <p class="eyebrow">ABOUT</p>
+      <h1>I built this <span class="accent">because my own hand kept doing it.</span></h1>
+      <p class="hero-sub">A solo, final-year engineering project. This is who's behind it, why it exists, and what it will never do.</p>
+    </div>
+
+    <div class="prose">
+      <h3>The story</h3>
+      <p>During my diploma years, my phone access was restricted. Then B.Tech happened, and with it, PDFs replaced textbooks — a phone stopped being optional and became the thing I had to open just to study. That shift, from restriction to constant access, is where the habit started.</p>
+      <p>I already track real progress on GitHub, and watching that grid fill in over a year is genuinely satisfying. I wanted the same clear, undeniable visual for the time I was losing — not a lecture, not a blocker that gets bypassed, just the truth laid out one square at a time.</p>
+
+      <h3>What APCG does</h3>
+      <ul>
+        <li>Counts a Reel as "watched" only when it's actually watched to completion;</li>
+        <li>Turns that count into a private, GitHub-style grid — one square per day;</li>
+        <li>Keeps every byte of that data on your own device, by default, forever;</li>
+        <li>Tracks streaks and a small, non-monetary badge — nothing you can buy your way into.</li>
+      </ul>
+
+      <h3>Why this exists</h3>
+      <p>Screen-time tools usually hide the data behind a settings menu, or block access outright and get bypassed within a day. APCG doesn't block anything — it just makes the invisible visible, the same way a GitHub streak does, except inverted. An empty grid is the win.</p>
+
+      <h3>What APCG will never do</h3>
+      <ul>
+        <li>It will never make your grid public or visible to anyone but you.</li>
+        <li>It will never upload your data anywhere without you explicitly turning on sync.</li>
+        <li>It will never gate features behind a subscription or a "streak freeze" purchase.</li>
+        <li>It will never require an account just to see your own numbers.</li>
+      </ul>
+
+      <h3>Roadmap</h3>
+      <ul>
+        <li>Harden Reel-completion detection against Instagram's real, changing DOM;</li>
+        <li>A red-zone content filter that gently blurs the Reels tab past the daily budget;</li>
+        <li>An opt-in, login-free sync code for viewing one grid across two devices;</li>
+        <li>An honest mobile path (Firefox for Android) instead of promising native-app support that isn't possible.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ PRIVACY ============ -->
+  <section class="page" id="page-privacy">
+    <div class="hero">
+      <p class="eyebrow">PRIVACY</p>
+      <h1>Your data <span class="accent">never leaves your device.</span></h1>
+      <p class="hero-sub">No account, no server, no analytics SDK. Here's exactly what that means.</p>
+    </div>
+
+    <div class="prose">
+      <h3>What's stored</h3>
+      <p>One number per calendar day: how many Reels you fully watched. That's it. It lives in your browser's local extension storage (<code>chrome.storage.local</code>).</p>
+
+      <h3>What's never collected</h3>
+      <ul>
+        <li>No video content, thumbnails, or captions are read or stored;</li>
+        <li>No account, email, or login is ever required;</li>
+        <li>No usage data is sent to any server — there is currently no server;</li>
+        <li>No data is shared with Instagram, Meta, or any third party.</li>
+      </ul>
+
+      <h3>If sync is ever added</h3>
+      <p>A future, fully optional sync feature would use a random, locally-generated code — never an email or password. Turning it on would always be an explicit choice, never a default.</p>
+
+      <h3>Uninstalling</h3>
+      <p>Removing the extension deletes its local storage along with it. There's nothing left behind to "delete your account" for, because there was never an account.</p>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="page" id="page-contact">
+    <div class="hero">
+      <p class="eyebrow">CONTACT</p>
+      <h1>Tell me what <span class="accent">breaks, or what's missing.</span></h1>
+      <p class="hero-sub">A solo, in-progress project — real feedback shapes it more than a roadmap does.</p>
+    </div>
+
+    <div class="section">
+      <div class="contact-list">
+        <div class="contact-row">For bugs or detection issues: <a href="#">open an issue</a></div>
+        <div class="contact-row">For feature ideas: <a href="#">start a discussion</a></div>
+        <div class="contact-row">For anything else: <a href="#">reach out directly</a></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="cta-card">
+        <h3>Help shape the next version.</h3>
+        <p>A few minutes on how you actually use it goes further than another feature guess.</p>
+        <a class="btn-outline" href="#">Take the short survey →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="brand"><span class="brand-mark"></span><span class="brand-name">APCG</span></div>
+      <p>A private, local-only grid for your own attention. Built as a final-year engineering project.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Product</h4>
+      <a href="#how" data-page="how">How it works</a>
+      <a href="#home" data-page="home">The grid</a>
+      <a href="#privacy" data-page="privacy">Privacy</a>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <a href="#blog" data-page="blog">Dev log</a>
+      <a href="#about" data-page="about">About</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#about" data-page="about">About</a>
+      <a href="#contact" data-page="contact">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    APCG is an independent, personal project. It is not affiliated with, endorsed by, or sponsored by Instagram or Meta. All product names and trademarks mentioned belong to their respective owners.
+  </div>
+</footer>
+
+<script src="theme.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>

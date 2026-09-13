@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>APCG</title>
+  <link rel="stylesheet" href="theme.css" />
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <!-- HEADER: brand (kerned wordmark, guide §4) + live status + theme entry point -->
+  <header class="header">
+    <div class="brand">
+      <span class="brand-mark"></span>
+      <span class="brand-name">APCG</span>
+    </div>
+    <div class="header-actions">
+      <span class="pill" id="statusPill">● tracking instagram.com</span>
+      <a class="icon-btn" id="settingsBtn" href="settings.html" target="_blank" rel="noopener" title="Theme &amp; fonts" aria-label="Open theme settings">
+        <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6">
+          <circle cx="10" cy="10" r="2.6"/>
+          <path d="M10 2.6v2.1M10 15.3v2.1M17.4 10h-2.1M4.7 10H2.6M15.1 4.9l-1.5 1.5M6.4 13.6l-1.5 1.5M15.1 15.1l-1.5-1.5M6.4 6.4L4.9 4.9"/>
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <p class="eyebrow">THE PLEASURE OF PEACE</p>
+
+  <!-- 1 BIG: single focal point (guide §3) — everything else is deliberately smaller -->
+  <section class="hero-card">
+    <div class="hero-number" id="todayCount">0</div>
+    <div class="hero-label">commits today</div>
+    <div class="hero-status" id="todayStatus">No reels watched yet</div>
+  </section>
+
+  <!-- 2 MEDIUM: equal-weight pair, one visual step down from the hero -->
+  <section class="stat-pair">
+    <div class="stat-card">
+      <span class="stat-value" id="currentStreak">0</span>
+      <span class="stat-name">Current streak</span>
+      <span class="stat-sub">consecutive days</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value" id="longestStreak">0</span>
+      <span class="stat-name">Longest streak</span>
+      <span class="stat-sub">your best run</span>
+    </div>
+  </section>
+
+  <!-- REST SMALL: badge chip -->
+  <section class="badge-row">
+    <span class="badge-chip" id="badgeLabel">—</span>
+    <span class="badge-sub">earned at 7 / 30 / 90 days</span>
+  </section>
+
+  <!-- REST SMALL: the grid itself — real week columns, day rows, month labels -->
+  <section class="grid-card">
+    <div class="grid-card-head">
+      <div class="view-toggle" id="viewToggle">
+        <button class="toggle-btn active" data-view="week" type="button">Week</button>
+        <button class="toggle-btn" data-view="month" type="button">Month</button>
+      </div>
+      <div class="legend">
+        <span class="legend-item"><span class="swatch green"></span>0–5</span>
+        <span class="legend-item"><span class="swatch yellow"></span>6–30</span>
+        <span class="legend-item"><span class="swatch red"></span>31+</span>
+      </div>
+    </div>
+
+    <div class="month-labels" id="monthLabels"></div>
+    <div class="grid-body">
+      <div class="day-labels">
+        <span></span><span>Mon</span><span></span><span>Wed</span><span></span><span>Fri</span><span></span>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+
+    <div class="month-view" id="monthView" hidden></div>
+  </section>
+
+  <a class="dashboard-link" href="dashboard.html" target="_blank" rel="noopener">Open full dashboard →</a>
+
+  <footer class="footer">
+    All data stays on this device. Nothing is uploaded. No login, ever.
+  </footer>
+
+  <script src="theme.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
